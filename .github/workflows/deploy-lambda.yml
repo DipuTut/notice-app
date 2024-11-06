@@ -30,13 +30,13 @@ jobs:
       
       # Debugging step to verify build output
       - name: Verify build output
-        run: ls -R ./src/build
+        run: ls -R ./build
           
       - name: Upload artifact to enable deployment
         uses: actions/upload-artifact@v4
         with:
           name: production-file
-          path: ./src/build
+          path: ./build
 
   # Deploy Job
   deploy:
@@ -49,9 +49,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: production-file
-          path: ./src/build
+          path: ./build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          publish_dir: ./src/build
+          publish_dir: ./build
