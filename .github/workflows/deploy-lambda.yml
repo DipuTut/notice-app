@@ -20,19 +20,19 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          cd notice-app
+          cd src/app
           npm install
 
       - name: Build Project
         run: |
-          cd notice-app 
+          cd src/app 
           npm run build
 
       - name: Upload artifact to enable deployment
         uses: actions/upload-artifact@v4
         with:
           name: poduction file
-          path: ./notice-app/build
+          path: ./app/build
 
   # Deploy Job
   deploy:
@@ -45,9 +45,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: poduction file
-          path: ./notice-app/build
+          path: ./app/build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          publish_dir: ./notice-app/build
+          publish_dir: ./app/build
