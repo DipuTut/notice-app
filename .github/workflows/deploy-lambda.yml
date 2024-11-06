@@ -20,12 +20,12 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          cd src
+          
           npm install
 
       - name: Build Project
         run: |
-          cd src 
+         
           CI=false npm run build
       
       # Debugging step to verify build output
@@ -36,7 +36,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: production-file
-          path: ./src/build
+          path: ./build
 
   # Deploy Job
   deploy:
